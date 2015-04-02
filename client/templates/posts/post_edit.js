@@ -12,7 +12,7 @@ Template.postEdit.events({
 		Posts.update(currentPostId, {$set: postProperties}, function(error) {
 		if (error) {
 			// display the error to the user
-			alert(error.reason);
+			throwError(error.reason);
 		} else {
 			Router.go('postPage', {_id: currentPostId});
 			}
@@ -21,7 +21,7 @@ Template.postEdit.events({
 
 'click .delete': function(e) {
 	e.preventDefault();
-	
+
 	if (confirm("Delete this post?")) {
 		var currentPostId = this._id;
 		Posts.remove(currentPostId);
